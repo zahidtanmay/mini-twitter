@@ -51,8 +51,11 @@
                 </div>
 
               </v-row>
+
             </v-col>
+
           </v-row>
+
         </div>
 
       </v-card>

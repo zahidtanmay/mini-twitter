@@ -27,7 +27,7 @@ export default {
   computed: {
   },
   mounted() {
-    this.$store.dispatch('FETCH_POSTS');
+    this.$store.dispatch('FETCH_DATA', { type: 'POST_DATA' });
   },
 };
 </script>

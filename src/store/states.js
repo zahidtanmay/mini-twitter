@@ -1,4 +1,7 @@
 export default {
-  posts: [],
+  posts: null,
+  currentPage: null,
+  lastPage: null,
+  nextPageUrl: null,
   loader: false,
 };
