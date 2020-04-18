@@ -15,4 +15,11 @@ export async function getRequest(url) {
   return r;
 }
 
-export const x = 5;
+export async function postRequest(url, data) {
+  console.log('post request', url, data);
+  try {
+    return await axios.post(`${url}`, { ...data });
+  } catch (e) {
+    return e.response;
+  }
+}

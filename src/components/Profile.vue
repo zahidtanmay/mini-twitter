@@ -18,7 +18,7 @@
           <v-row>
             <v-col>
               <div class="text-center mb-3 title text-secundario font-weight-bold">
-                <span>@</span>jahid
+                <span>@</span>{{getUser.first_name}}
               </div>
               <div class="text-center mb-3 pr-5 pl-5 font-weight-regular">
                 bio
@@ -30,7 +30,7 @@
               <div class="text-center mb-3">
                 <v-icon>mdi-web</v-icon>
                 <span>
-                      <a target="_blank">&nbsp;data.website</a>
+                      <a target="_blank">{{getUser.email}}</a>
                     </span>
               </div>
               <div class="text-center">
@@ -59,7 +59,7 @@
       <v-row>
         <v-col offset="1" cols="10" class="text-center relative py-0">
           <div class="text-center">
-            <v-btn color="success" x-large>Log In</v-btn>
+            <v-btn color="success" x-large to="/login">Log In</v-btn>
           </div>
         </v-col>
       </v-row>
@@ -77,6 +77,7 @@ export default {
   computed: {
     ...mapGetters([
       'isAuthenticated',
+      'getUser',
     ]),
   },
 };

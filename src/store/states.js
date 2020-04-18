@@ -5,4 +5,7 @@ export default {
   nextPageUrl: null,
   loader: false,
   authStatus: false,
+  user: null,
+  loginError: null,
+  loginLoading: false,
 };

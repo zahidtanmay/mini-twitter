@@ -17,4 +17,17 @@ export default {
   SET_AUTH_STATUS: (state, value) => {
     Vue.set(state, 'authStatus', value);
   },
+  SET_USER_DATA: (state, value) => {
+    localStorage.setItem('token', value.token);
+    localStorage.setItem('user', JSON.stringify(value.user));
+    Vue.set(state, 'user', value.user);
+    Vue.set(state, 'authStatus', true);
+    location.href = '/';
+  },
+  SET_LOGIN_ERROR: (state, value) => {
+    Vue.set(state, 'loginError', value);
+  },
+  SET_LOGIN_LOADING: (state, value) => {
+    Vue.set(state, 'loginLoading', value);
+  },
 };
