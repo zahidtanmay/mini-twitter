@@ -17,7 +17,7 @@ export default {
   SET_AUTH_STATUS: (state, value) => {
     Vue.set(state, 'authStatus', value);
   },
-  SET_USER_DATA: (state, value) => {
+  SET_LOGIN_DATA: (state, value) => {
     localStorage.setItem('token', value.token);
     localStorage.setItem('user', JSON.stringify(value.user));
     Vue.set(state, 'user', value.user);
@@ -29,5 +29,9 @@ export default {
   },
   SET_LOGIN_LOADING: (state, value) => {
     Vue.set(state, 'loginLoading', value);
+  },
+  SET_USER_INFO: (state) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    Vue.set(state, 'user', user);
   },
 };

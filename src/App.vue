@@ -55,5 +55,8 @@ export default {
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
   },
+  mounted() {
+    this.$store.commit('SET_USER_INFO');
+  },
 };
 </script>

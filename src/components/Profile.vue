@@ -2,9 +2,10 @@
 
   <v-col cols="12" sm="4" order="-1" order-sm="2" >
 
-    <v-card min-height="300" min-width="150" elevation="0" outlined v-if="isAuthenticated">
+    <v-card min-height="300" min-width="150" elevation="0"
+            outlined v-if="isAuthenticated">
 
-      <v-row class="pa-3">
+      <v-row class="pa-3" v-if="getUser">
 
         <v-col offset="1" cols="10" class="text-center relative">
           <v-avatar size="120">

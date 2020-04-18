@@ -8,23 +8,22 @@ import './library/filters';
 Vue.config.productionTip = false;
 /* eslint-disable */
 router.beforeEach(async function (to, from, next) {
-  console.log('ROUTER', to, from);
   const token = await localStorage.getItem('token');
   if (token) {
-    console.log('ROUTER TOKEN', token);
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace('-', '+').replace('_', '/');
-    if (JSON.parse(window.atob(base64)).exp > (Date.now() / 1000)) {
+    if (JSON.parse(window.atob(base64)).exp * 1000 > Date.now()) {
       store.commit('SET_AUTH_STATUS', true);
       next();
+    } else {
+      store.commit('SET_AUTH_STATUS', false);
+      localStorage.clear();
+      next();
     }
-    console.log('ROUTER TOKEN EXPIRED', token);
+  } else {
     store.commit('SET_AUTH_STATUS', false);
-    localStorage.clear();
     next();
   }
-  store.commit('SET_AUTH_STATUS', false);
-  next();
 });
 /* eslint-disable */
 

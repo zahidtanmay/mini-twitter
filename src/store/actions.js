@@ -30,7 +30,7 @@ export default {
     const url = 'http://mini-twitter.test/api/auth/login';
     const r = await postRequest(url, { ...credential });
     if ('token' in r.data) {
-      commit('SET_USER_DATA', r.data);
+      commit('SET_LOGIN_DATA', r.data);
     } else {
       commit('SET_LOGIN_ERROR', r.data.error.messages[0]);
     }
