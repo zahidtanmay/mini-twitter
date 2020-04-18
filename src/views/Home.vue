@@ -24,8 +24,6 @@ export default {
   created() {
     window.scrollTo(0, 0);
   },
-  computed: {
-  },
   mounted() {
     this.$store.dispatch('FETCH_DATA', { type: 'POST_DATA' });
   },

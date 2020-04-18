@@ -14,4 +14,7 @@ export default {
   SET_LOADER: (state, value) => {
     Vue.set(state, 'loader', value);
   },
+  SET_AUTH_STATUS: (state, value) => {
+    Vue.set(state, 'authStatus', value);
+  },
 };

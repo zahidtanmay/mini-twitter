@@ -1,4 +1,4 @@
 export default {
   getPosts: (state) => state.posts,
-  getLoaderStatus: (state) => state.loader,
+  isAuthenticated: (state) => state.authStatus,
 };

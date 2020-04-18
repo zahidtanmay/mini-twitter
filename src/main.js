@@ -6,6 +6,24 @@ import vuetify from './plugins/vuetify';
 import './library/filters';
 
 Vue.config.productionTip = false;
+/* eslint-disable */
+router.beforeEach(async function (to, from, next) {
+  const token = await localStorage.getItem('token');
+  if (token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace('-', '+').replace('_', '/');
+    if (JSON.parse(window.atob(base64)).exp > (Date.now() / 1000)) {
+      store.commit('SET_AUTH_STATUS', true);
+      next();
+    }
+    store.commit('SET_AUTH_STATUS', false);
+    localStorage.clear();
+    next();
+  }
+  store.commit('SET_AUTH_STATUS', false);
+  next();
+});
+/* eslint-disable */
 
 new Vue({
   router,

@@ -8,3 +8,5 @@ function convertToDay(date) {
 }
 
 Vue.filter('day', (val) => convertToDay(val));
+
+Vue.filter('avatar', (val) => val.charAt(0));

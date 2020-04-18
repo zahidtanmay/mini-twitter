@@ -4,4 +4,5 @@ export default {
   lastPage: null,
   nextPageUrl: null,
   loader: false,
+  authStatus: false,
 };

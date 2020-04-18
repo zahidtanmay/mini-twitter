@@ -12,7 +12,7 @@
 
             <v-col offset="1" cols="12" offset-sm="0" sm="2" class="text-center px-0">
               <v-avatar color="indigo" size="80">
-                <span class="white--text headline">CJ</span>
+                <span class="white--text headline">{{post.user.first_name | avatar}}</span>
               </v-avatar>
             </v-col>
 
