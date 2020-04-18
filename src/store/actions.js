@@ -36,4 +36,8 @@ export default {
     }
     commit('SET_LOGIN_LOADING', false);
   },
+  async LOGOUT({ commit }) {
+    await localStorage.clear();
+    commit('SET_AUTH_STATUS', false);
+  },
 };

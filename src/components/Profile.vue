@@ -41,6 +41,15 @@
 
             </v-col>
           </v-row>
+
+          <v-row>
+            <v-col offset="1" cols="10" class="text-center relative py-0">
+              <div class="text-center">
+                <v-btn color="success" @click="LOGOUT" small>Log Out</v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
         </v-col>
 
       </v-row>
@@ -72,13 +81,18 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
     ...mapGetters([
       'isAuthenticated',
       'getUser',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'LOGOUT',
     ]),
   },
 };
