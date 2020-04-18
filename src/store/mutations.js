@@ -1,5 +1,7 @@
+import Vue from 'vue';
+
 export default {
   SET_POSTS: (state, value) => {
-    state.posts = value;
+    Vue.set(state, 'posts', value);
   },
 };
