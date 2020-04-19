@@ -3,19 +3,19 @@
   <v-col cols="12" sm="4" order="-1" order-sm="2" >
 
     <v-card min-height="300" min-width="150" elevation="0"
-            outlined v-if="isAuthenticated">
+            outlined>
 
-      <v-row class="pa-3" v-if="getUser">
+      <v-row class="pa-3" v-if="getProfileUser">
 
         <v-col offset="1" cols="10" class="text-center relative">
           <v-avatar color="indigo" size="80">
-            <span class="white--text headline">{{getUser.first_name | avatar}}</span>
+            <span class="white--text headline">{{getProfileUser.first_name | avatar}}</span>
           </v-avatar>
 
-          <v-btn fab color="cyan accent-2"
-            bottom left absolute @click="SET_POST_DIALOG(true)">
-            <v-icon>mdi-pencil</v-icon>
-          </v-btn>
+          <!--<v-btn fab color="cyan accent-2"-->
+                 <!--bottom left absolute @click="SET_POST_DIALOG(true)">-->
+            <!--<v-icon>mdi-pencil</v-icon>-->
+          <!--</v-btn>-->
         </v-col>
 
         <v-col offset="1" cols="10" class="background">
@@ -23,13 +23,13 @@
             <v-col>
 
               <div class="text-center mb-3 title text-secundario font-weight-bold">
-                {{getUser.first_name}} {{getUser.last_name}}
+                {{getProfileUser.first_name}} {{getProfileUser.last_name}}
               </div>
 
               <div class="text-center mb-3">
                 <v-icon>mdi-web</v-icon>
                 <span>
-                  <a target="_blank">&nbsp;{{getUser.email}}</a>
+                  <a target="_blank">&nbsp;{{getProfileUser.email}}</a>
                 </span>
               </div>
 
@@ -39,26 +39,6 @@
 
         </v-col>
 
-      </v-row>
-
-    </v-card>
-
-    <v-card min-height="300" min-width="150" elevation="0" outlined v-else>
-
-      <v-row>
-        <v-col offset="1" cols="10" class="text-center relative mt-12">
-          <div class="text-center">
-            <v-btn color="primary" dark x-large to="/signup">Sign Up</v-btn>
-          </div>
-        </v-col>
-      </v-row>
-
-      <v-row>
-        <v-col offset="1" cols="10" class="text-center relative py-0">
-          <div class="text-center">
-            <v-btn color="success" x-large to="/login">Log In</v-btn>
-          </div>
-        </v-col>
       </v-row>
 
     </v-card>
@@ -80,7 +60,7 @@ export default {
   computed: {
     ...mapGetters([
       'isAuthenticated',
-      'getUser',
+      'getProfileUser',
     ]),
   },
   methods: {

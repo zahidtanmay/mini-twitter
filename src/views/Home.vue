@@ -24,8 +24,8 @@ export default {
   },
   methods: {
     handlescrl() {
-      console.log('handle scrl HOME');
-      if (this.bottomVisible()) {
+      console.log('handle scrl HOME', this.$route.name);
+      if (this.bottomVisible() && this.$route.name === 'home') {
         this.$store.dispatch('FETCH_DATA', { type: 'APPEND_POST_DATA' });
       }
     },

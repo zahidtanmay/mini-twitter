@@ -6,7 +6,7 @@
 
       <posts/>
 
-      <!--<Profile/>-->
+      <Profile/>
 
     </v-row>
 
@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import Posts from '@/components/Posts.vue';
-import Profile from '@/components/Profile.vue';
+import Posts from '@/components/UserPosts.vue';
+import Profile from '@/components/UserProfile.vue';
 
 export default {
   components: {
@@ -26,7 +26,7 @@ export default {
     handlescrl() {
       console.log('handle scrl PROFILE');
       if (this.bottomVisible()) {
-        this.$store.dispatch('FETCH_DATA', { type: 'APPEND_POST_DATA' });
+        // this.$store.dispatch('FETCH_DATA', { type: 'APPEND_POST_DATA' });
       }
     },
     bottomVisible() {
@@ -51,7 +51,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   mounted() {
+    this.$store.commit('SET_PROFILE_ID', this.$route.params.name);
     this.$store.dispatch('FETCH_DATA', { type: 'USER_DATA' });
+    this.$store.commit(('RESET_POST_DATA'));
   },
 };
 </script>

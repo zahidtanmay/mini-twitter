@@ -10,4 +10,6 @@ export default {
   getSnackBar: (state) => state.snackBar,
   getCommentDialog: (state) => state.commentDialog,
   getComments: (state) => state.comments,
+  getProfileUser: (state) => state.profileUser,
+  getProfilePosts: (state) => state.profilePosts,
 };

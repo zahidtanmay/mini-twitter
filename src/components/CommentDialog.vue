@@ -22,7 +22,7 @@
           <template v-for="(comment, index) in getComments">
             <v-list-item :key="`comment-list-key-${index}`">
               <v-list-item-avatar color="indigo">
-                <span class="white--text headline">x</span>
+                <span class="white--text headline">{{comment.user.first_name | avatar}}</span>
               </v-list-item-avatar>
 
               <v-list-item-content>

@@ -21,4 +21,7 @@ export default {
   comments: [],
   postId: null,
   commentLoading: false,
+  profileId: null,
+  profileUser: null,
+  profilePosts: [],
 };

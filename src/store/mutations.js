@@ -7,9 +7,9 @@ export default {
     value.data.forEach(item => currentValue.push(item));
     /* eslint-disable */
     Vue.set(state, 'posts', currentValue);
-    Vue.set(state, 'currentPage', value.current_page);
-    Vue.set(state, 'lastPage', value.last_page);
-    Vue.set(state, 'nextPageUrl', value.next_page_url);
+    Vue.set(state, 'currentPage', value.current_page || 0);
+    Vue.set(state, 'lastPage', value.last_page || '');
+    Vue.set(state, 'nextPageUrl', value.next_page_url || '');
   },
   SET_LOADER: (state, value) => {
     Vue.set(state, 'loader', value);
@@ -60,5 +60,22 @@ export default {
   },
   SET_COMMENT_LOADING: (state, value) => {
     Vue.set(state, 'commentLoading', value);
+  },
+  SET_PROFILE_ID: (state, value) => {
+    Vue.set(state, 'profileId', value);
+  },
+  SET_USER_POSTS: (state, value) => {
+    console.log('user profile', value);
+    Vue.set(state, 'profilePosts', value.posts);
+    Vue.set(state, 'profileUser',
+      {
+        id: value.id,
+        email: value.email,
+        first_name: value.first_name,
+        last_name: value.last_name
+      });
+  },
+  RESET_POST_DATA: (state) => {
+    Vue.set(state, 'posts', []);
   },
 };

@@ -1,12 +1,16 @@
 import { getRequest, postRequest } from '../library/fetchRequests';
+/* eslint-disable */
+import router from '../router';
+/* eslint-disable */
 
 export default {
   async FETCH_DATA({ state, commit }, { type }) {
     commit('SET_LOADER', true);
-    const url = `${process.env.VUE_APP_POST_BASE_URL}/posts`;
+    let url = '';
     let r;
     switch (type) {
       case 'POST_DATA':
+        url = `${process.env.VUE_APP_POST_BASE_URL}/posts`;
         r = await getRequest(url);
         if (r) {
           commit('SET_POSTS', r.data);
@@ -19,6 +23,13 @@ export default {
         r = await getRequest(state.nextPageUrl);
         if (r) {
           commit('SET_POSTS', r.data);
+        }
+        break;
+      case 'USER_DATA':
+        url = `http://mini-twitter.test/api/users/${state.profileId}`;
+        r = await getRequest(url);
+        if (r.data) {
+          commit('SET_USER_POSTS', r.data || []);
         }
         break;
       default:
@@ -86,5 +97,10 @@ export default {
       commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
     }
     commit('SET_COMMENT_LOADING', false);
+  },
+  async VISIT_PROFILE({ commit }, data) {
+    console.log('VISIT_PROFILE', data);
+    commit('SET_PROFILE_ID', data.id);
+    router.push({ name: 'profile', params: { name: data.id }})
   },
 };

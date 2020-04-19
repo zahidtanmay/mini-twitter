@@ -1,8 +1,8 @@
 <template>
 
-  <v-col cols="12" sm="8" order="1" order-sm="1" v-if="getPosts">
+  <v-col cols="12" sm="8" order="1" order-sm="1" v-if="getProfilePosts">
 
-    <template v-for="(post, i) in getPosts" >
+    <template v-for="(post, i) in getProfilePosts" >
 
       <v-card class="mb-5" :key="`post-key-${i}`" elevation="0" outlined>
 
@@ -13,7 +13,7 @@
             <v-col offset="1" cols="12" offset-sm="0" sm="2" class="text-center px-0">
               <a>
                 <v-avatar color="indigo" size="80">
-                  <span class="white--text headline">{{post.user.first_name | avatar}}</span>
+                  <span class="white--text headline">{{getProfileUser.first_name | avatar}}</span>
                 </v-avatar>
               </a>
             </v-col>
@@ -23,9 +23,7 @@
               <v-row>
 
                 <v-col cols="12" class="pa-0">
-                  <a class="title cyan--text hover"
-                     @click="VISIT_PROFILE({ name: post.user.first_name, id: post.user.id })"
-                  >{{post.user.first_name}}</a>
+                  <p class="title cyan--text hover">{{getProfileUser.first_name}}</p>
                   <p class="font-weight-light grey--text text--darken-1 body-2">
                     {{post.created_at | day}}
                   </p>
@@ -82,7 +80,8 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getPosts',
+      'getProfilePosts',
+      'getProfileUser',
     ]),
   },
   methods: {
@@ -95,5 +94,5 @@ export default {
 </script>
 
 <style>
-  .post-card {border: thin solid rgba(0,0,0,.12);}
+.post-card {border: thin solid rgba(0,0,0,.12);}
 </style>

@@ -1,7 +1,8 @@
 <template>
   <v-app-bar app color="primary" dark>
 
-    <v-toolbar-title class="headline text-uppercase hover" @click="$router.push('/')">
+    <v-toolbar-title class="headline text-uppercase hover" @click="$router.push('/')"
+                     style="cursor: pointer;">
       <span>Mini Twitter</span>
     </v-toolbar-title>
 
