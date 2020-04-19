@@ -3,18 +3,12 @@
     v-model="getSnackBar.status"
     :color="getSnackBar.type"
     multi-line="multi-line"
-    right="true"
-    timeout="6000"
-    top="true"
+    :right="right"
+    :timeout="timeout"
+    :top="top"
+    v-if="getSnackBar"
   >
     {{ getSnackBar.text }}
-    <!--<v-btn-->
-      <!--dark-->
-      <!--text-->
-      <!--@click="snackbar = false"-->
-    <!--&gt;-->
-      <!--Close-->
-    <!--</v-btn>-->
   </v-snackbar>
 </template>
 
@@ -22,6 +16,11 @@
 import { mapGetters } from 'vuex';
 
 export default {
+  data: () => ({
+    top: true,
+    right: true,
+    timeout: 6000,
+  }),
   computed: {
     ...mapGetters([
       'getSnackBar',

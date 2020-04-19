@@ -37,7 +37,7 @@
 
                   <v-card-actions>
 
-                    <v-btn color="#2c003e" text small>
+                    <v-btn color="#2c003e" text small @click="SHOW_COMMENTS(post)">
                       <v-icon left>mdi-comment-multiple-outline</v-icon>
                       {{post.comments.length}} Comments
                     </v-btn>
@@ -62,17 +62,28 @@
 
     </template>
 
+    <comment-dialog/>
+
   </v-col>
 
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import CommentDialog from '@/components/CommentDialog.vue';
 
 export default {
+  components: {
+    CommentDialog,
+  },
   computed: {
     ...mapGetters([
       'getPosts',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'SHOW_COMMENTS',
     ]),
   },
 };

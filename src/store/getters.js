@@ -8,4 +8,6 @@ export default {
   getSignUpLoading: (state) => state.signupLoading,
   getPostSubmitLoading: (state) => state.postSubmitLoading,
   getSnackBar: (state) => state.snackBar,
+  getCommentDialog: (state) => state.commentDialog,
+  getComments: (state) => state.comments,
 };

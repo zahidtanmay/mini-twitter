@@ -17,4 +17,8 @@ export default {
     text: '',
     status: false,
   },
+  commentDialog: false,
+  comments: [],
+  postId: null,
+  commentLoading: false,
 };

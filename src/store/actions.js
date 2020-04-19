@@ -55,8 +55,8 @@ export default {
     commit('SET_SIGNUP_LOADING', false);
   },
   async SUBMIT_POST({ commit }, content) {
-    const token = await localStorage.getItem('token');
     commit('SET_POST_LOADING', true);
+    const token = await localStorage.getItem('token');
     const url = `http://mini-twitter.test/api/posts?token=${token}`;
     const r = await postRequest(url, content);
     console.log('sign up r', r);
@@ -64,8 +64,27 @@ export default {
       commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
       commit('SET_POST_DIALOG', false);
     } else {
-      // commit('SET_SIGNUP_ERROR', r.data.error.messages);
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
     }
     commit('SET_POST_LOADING', false);
+  },
+  async SHOW_COMMENTS({ commit }, data) {
+    console.log('comment data', data);
+    commit('SET_COMMENTS', data.comments);
+    commit('SET_POST_ID', data.id);
+    commit('SET_COMMENT_DIALOG', true);
+  },
+  async POST_COMMENT({ state, commit }, content) {
+    commit('SET_COMMENT_LOADING', true);
+    const token = await localStorage.getItem('token');
+    const url = `http://mini-twitter.test/api/posts/${state.postId}/comments?token=${token}`;
+    const r = await postRequest(url, content);
+    console.log('Post r', r);
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+    commit('SET_COMMENT_LOADING', false);
   },
 };

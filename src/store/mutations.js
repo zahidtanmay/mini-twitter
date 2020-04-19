@@ -49,4 +49,16 @@ export default {
   SET_SNACK_BAR: (state, value) => {
     Vue.set(state, 'snackBar', value);
   },
+  SET_COMMENT_DIALOG: (state, value) => {
+    Vue.set(state, 'commentDialog', value);
+  },
+  SET_COMMENTS: (state, value) => {
+    Vue.set(state, 'comments', value);
+  },
+  SET_POST_ID: (state, value) => {
+    Vue.set(state, 'postId', value);
+  },
+  SET_COMMENT_LOADING: (state, value) => {
+    Vue.set(state, 'commentLoading', value);
+  },
 };
