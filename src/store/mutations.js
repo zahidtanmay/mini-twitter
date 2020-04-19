@@ -40,4 +40,13 @@ export default {
   SET_SIGNUP_LOADING: (state, value) => {
     Vue.set(state, 'signupLoading', value);
   },
+  SET_POST_DIALOG: (state, value) => {
+    Vue.set(state, 'postDialog', value);
+  },
+  SET_POST_LOADING: (state, value) => {
+    Vue.set(state, 'postSubmitLoading', value);
+  },
+  SET_SNACK_BAR: (state, value) => {
+    Vue.set(state, 'snackBar', value);
+  },
 };

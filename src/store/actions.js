@@ -54,4 +54,18 @@ export default {
     }
     commit('SET_SIGNUP_LOADING', false);
   },
+  async SUBMIT_POST({ commit }, content) {
+    const token = await localStorage.getItem('token');
+    commit('SET_POST_LOADING', true);
+    const url = `http://mini-twitter.test/api/posts?token=${token}`;
+    const r = await postRequest(url, content);
+    console.log('sign up r', r);
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+      commit('SET_POST_DIALOG', false);
+    } else {
+      // commit('SET_SIGNUP_ERROR', r.data.error.messages);
+    }
+    commit('SET_POST_LOADING', false);
+  },
 };

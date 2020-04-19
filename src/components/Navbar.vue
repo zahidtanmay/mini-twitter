@@ -7,12 +7,26 @@
 
     <v-spacer></v-spacer>
 
+    <v-btn icon @click="LOGOUT" v-if="isAuthenticated">
+      <v-icon>mdi-logout</v-icon>
+    </v-btn>
+
   </v-app-bar>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex';
+
 export default {
-  data: () => ({
-  }),
+  computed: {
+    ...mapGetters([
+      'isAuthenticated',
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'LOGOUT',
+    ]),
+  },
 };
 </script>

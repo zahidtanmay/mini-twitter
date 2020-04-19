@@ -11,12 +11,15 @@
 
     </v-content>
 
+    <snack-bar/>
+
   </v-app>
 </template>
 
 <script>
 import Navbar from '@/components/Navbar.vue';
 import Loader from '@/components/Loader.vue';
+import SnackBar from '@/components/SnackBar.vue';
 
 export default {
   name: 'App',
@@ -24,6 +27,7 @@ export default {
   components: {
     Loader,
     Navbar,
+    SnackBar,
   },
 
   data: () => ({

@@ -10,4 +10,11 @@ export default {
   loginLoading: false,
   signupError: null,
   signupLoading: false,
+  postDialog: false,
+  postSubmitLoading: false,
+  snackBar: {
+    type: '',
+    text: '',
+    status: false,
+  },
 };

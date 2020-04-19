@@ -6,4 +6,6 @@ export default {
   getLogInLoading: (state) => state.loginLoading,
   getSignUpError: (state) => state.signupError,
   getSignUpLoading: (state) => state.signupLoading,
+  getPostSubmitLoading: (state) => state.postSubmitLoading,
+  getSnackBar: (state) => state.snackBar,
 };
