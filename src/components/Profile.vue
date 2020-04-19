@@ -61,7 +61,7 @@
       <v-row>
         <v-col offset="1" cols="10" class="text-center relative mt-12">
           <div class="text-center">
-            <v-btn color="primary" dark x-large>Sign Up</v-btn>
+            <v-btn color="primary" dark x-large to="/signup">Sign Up</v-btn>
           </div>
         </v-col>
       </v-row>

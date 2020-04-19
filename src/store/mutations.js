@@ -34,4 +34,10 @@ export default {
     const user = JSON.parse(localStorage.getItem('user'));
     Vue.set(state, 'user', user);
   },
+  SET_SIGNUP_ERROR: (state, value) => {
+    Vue.set(state, 'signupError', value);
+  },
+  SET_SIGNUP_LOADING: (state, value) => {
+    Vue.set(state, 'signupLoading', value);
+  },
 };

@@ -8,4 +8,6 @@ export default {
   user: null,
   loginError: null,
   loginLoading: false,
+  signupError: null,
+  signupLoading: false,
 };

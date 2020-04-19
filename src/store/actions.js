@@ -40,4 +40,18 @@ export default {
     await localStorage.clear();
     commit('SET_AUTH_STATUS', false);
   },
+  async SIGN_UP({ commit }, formData) {
+    commit('SET_SIGNUP_LOADING', true);
+    const url = 'http://mini-twitter.test/api/users';
+    const r = await postRequest(url, { ...formData });
+    console.log('sign up r', r);
+    if ('status' in r.data) {
+      /* eslint-disable */
+      location.href = '/';
+      /* eslint-disable */
+    } else {
+      commit('SET_SIGNUP_ERROR', r.data.error.messages);
+    }
+    commit('SET_SIGNUP_LOADING', false);
+  },
 };

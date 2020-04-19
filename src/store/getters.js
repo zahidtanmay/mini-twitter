@@ -4,4 +4,6 @@ export default {
   getUser: (state) => state.user,
   getLogInError: (state) => state.loginError,
   getLogInLoading: (state) => state.loginLoading,
+  getSignUpError: (state) => state.signupError,
+  getSignUpLoading: (state) => state.signupLoading,
 };
