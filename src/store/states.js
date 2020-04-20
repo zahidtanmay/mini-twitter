@@ -1,5 +1,6 @@
 export default {
   posts: null,
+  trendingPosts: null,
   currentPage: null,
   lastPage: null,
   nextPageUrl: null,
@@ -29,4 +30,6 @@ export default {
   followers: [],
   following: [],
   userListHeader: '',
+  tab: 0,
+  feedComponent: 'LatestFeed',
 };

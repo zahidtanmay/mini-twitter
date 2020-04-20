@@ -63,7 +63,7 @@
 
     </v-card>
 
-    <post-dialog/>
+    <post-dialog v-if="getPostDialog" />
 
   </v-col>
 
@@ -81,6 +81,7 @@ export default {
     ...mapGetters([
       'isAuthenticated',
       'getUser',
+      'getPostDialog',
     ]),
   },
   methods: {

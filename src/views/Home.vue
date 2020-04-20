@@ -11,21 +11,27 @@
     </v-row>
 
   </v-container>
+
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import Posts from '@/components/Posts.vue';
 import Profile from '@/components/Profile.vue';
 
 export default {
+  computed: {
+    ...mapGetters([
+      'getFeedComponent',
+    ]),
+  },
   components: {
     Posts,
     Profile,
   },
   methods: {
     handlescrl() {
-      console.log('handle scrl HOME', this.$route.name);
-      if (this.bottomVisible() && this.$route.name === 'home') {
+      if (this.bottomVisible() && this.$route.name === 'home' && this.getFeedComponent === 'LatestFeed') {
         this.$store.dispatch('FETCH_DATA', { type: 'APPEND_POST_DATA' });
       }
     },
@@ -49,9 +55,6 @@ export default {
   },
   destroyed() {
     window.removeEventListener('scroll', this.handleScroll);
-  },
-  mounted() {
-    this.$store.dispatch('FETCH_DATA', { type: 'POST_DATA' });
   },
 };
 </script>

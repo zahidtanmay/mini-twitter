@@ -93,4 +93,25 @@ export default {
   SET_USER_LIST_HEADER: (state, value) => {
     Vue.set(state, 'userListHeader', value);
   },
+  SELECT_TRENDING: (state) => {
+    Vue.set(state, 'tab', 1);
+    Vue.set(state, 'feedComponent', 'TrendingFeed');
+  },
+  SELECT_LATEST: (state) => {
+    Vue.set(state, 'tab', 0);
+    Vue.set(state, 'feedComponent', 'LatestFeed');
+  },
+  SET_TRENDING_DATA: (state, value) => {
+    console.log('st value', value)
+    let data = [];
+    value.forEach((list) => {
+      list.forEach((item) => {
+        data.push(item);
+      });
+    });
+    Vue.set(state, 'trendingPosts', data);
+  },
+  RESET_USER_DATA: (state) => {
+    Vue.set(state, 'followers', []);
+  },
 };

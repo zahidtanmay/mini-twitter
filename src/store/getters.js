@@ -1,5 +1,6 @@
 export default {
   getPosts: (state) => state.posts,
+  getTrendingPosts: (state) => state.trendingPosts,
   isAuthenticated: (state) => state.authStatus,
   getUser: (state) => state.user,
   getLogInError: (state) => state.loginError,
@@ -16,4 +17,6 @@ export default {
   getUserListHeader: (state) => state.userListHeader,
   getFollowers: (state) => state.followers,
   getFollowees: (state) => state.following,
+  getFeedComponent: (state) => state.feedComponent,
+  getPostDialog: (state) => state.postDialog,
 };

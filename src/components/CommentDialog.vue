@@ -71,5 +71,8 @@ export default {
       this.$store.dispatch('POST_COMMENT', { content: this.value });
     },
   },
+  mounted() {
+    console.log('comment');
+  },
 };
 </script>
