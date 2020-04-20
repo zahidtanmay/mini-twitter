@@ -1,4 +1,4 @@
-import { getRequest, postRequest } from '../library/fetchRequests';
+import { getRequest, postRequest, deleteRequest } from '../library/fetchRequests';
 /* eslint-disable */
 import router from '../router';
 /* eslint-disable */
@@ -119,5 +119,32 @@ export default {
       await commit('SET_USER_LIST_HEADER', 'Following');
     }
 
+  },
+  async FOLLOW_USER({ state, commit }) {
+    console.log('following id', state.user, state.profileUser);
+    const token = await localStorage.getItem('token');
+    const url = `http://mini-twitter.test/api/users/${state.user.id}/${state.profileUser.id}?token=${token}`;
+    const r = await postRequest(url, {});
+    console.log('Post r', r);
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+  },
+  async UNFOLLOW_USER({ state, commit }) {
+    let pivot = state.followers.filter((follower) => {
+      return follower.id === state.user.id;
+    });
+    console.log('pivot', pivot[0].pivot.id);
+    const token = await localStorage.getItem('token');
+    const url = `http://mini-twitter.test/api/users/unfollow/${pivot[0].pivot.id}?token=${token}`;
+    const r = await deleteRequest(url, {});
+    console.log('Post r', r);
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
   },
 };

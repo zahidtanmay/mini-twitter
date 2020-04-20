@@ -23,3 +23,12 @@ export async function postRequest(url, data) {
     return e.response;
   }
 }
+
+export async function deleteRequest(url, data) {
+  console.log('delete request', url, data);
+  try {
+    return await axios.delete(`${url}`, { ...data });
+  } catch (e) {
+    return e.response;
+  }
+}

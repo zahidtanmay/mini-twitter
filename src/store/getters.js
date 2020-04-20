@@ -14,4 +14,6 @@ export default {
   getProfilePosts: (state) => state.profilePosts,
   getUserList: (state) => state.usersList,
   getUserListHeader: (state) => state.userListHeader,
+  getFollowers: (state) => state.followers,
+  getFollowees: (state) => state.following,
 };

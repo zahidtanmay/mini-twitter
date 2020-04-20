@@ -2,7 +2,7 @@
 
   <v-col cols="12" sm="8" order="1" order-sm="1" >
 
-    <template v-if="getProfilePosts">
+    <template v-if="getProfilePosts && getProfilePosts.length > 0">
       <template v-for="(post, i) in getProfilePosts" >
 
         <v-card class="mb-5" :key="`post-key-${i}`" elevation="0" outlined>
@@ -66,7 +66,7 @@
       </template>
     </template>
 
-    <template v-if="getProfilePosts.length === 0">
+    <template v-else>
       <v-card class="mb-5" elevation="0" outlined>
         <v-col cols="12" sm="8">
 
