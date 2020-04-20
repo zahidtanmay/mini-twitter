@@ -12,4 +12,6 @@ export default {
   getComments: (state) => state.comments,
   getProfileUser: (state) => state.profileUser,
   getProfilePosts: (state) => state.profilePosts,
+  getUserList: (state) => state.usersList,
+  getUserListHeader: (state) => state.userListHeader,
 };

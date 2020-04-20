@@ -78,4 +78,19 @@ export default {
   RESET_POST_DATA: (state) => {
     Vue.set(state, 'posts', []);
   },
+  SET_LIST_DIALOG: (state, value) => {
+    Vue.set(state, 'listDialog', value);
+  },
+  SET_USERS_LIST: (state, value) => {
+    Vue.set(state, 'usersList', value);
+  },
+  SET_FOLLOWERS: (state, value) => {
+    Vue.set(state, 'followers', value);
+  },
+  SET_FOLLOWING: (state, value) => {
+    Vue.set(state, 'following', value);
+  },
+  SET_USER_LIST_HEADER: (state, value) => {
+    Vue.set(state, 'userListHeader', value);
+  },
 };

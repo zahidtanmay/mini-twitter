@@ -30,6 +30,8 @@ export default {
         r = await getRequest(url);
         if (r.data) {
           commit('SET_USER_POSTS', r.data || []);
+          commit('SET_FOLLOWERS', r.data.followers || []);
+          commit('SET_FOLLOWING', r.data.following || []);
         }
         break;
       default:
@@ -102,5 +104,20 @@ export default {
     console.log('VISIT_PROFILE', data);
     commit('SET_PROFILE_ID', data.id);
     router.push({ name: 'profile', params: { name: data.id }})
+  },
+  async SHOW_USER_LIST({ state, commit }, data) {
+    console.log('show user list', data);
+    await commit('SET_LIST_DIALOG', true);
+
+    if (data.type === 'followers') {
+      await commit('SET_USERS_LIST', state.followers);
+      await commit('SET_USER_LIST_HEADER', 'Followers');
+    }
+
+    if (data.type === 'following') {
+      await commit('SET_USERS_LIST', state.following);
+      await commit('SET_USER_LIST_HEADER', 'Following');
+    }
+
   },
 };

@@ -24,4 +24,9 @@ export default {
   profileId: null,
   profileUser: null,
   profilePosts: [],
+  listDialog: false,
+  usersList: [],
+  followers: [],
+  following: [],
+  userListHeader: '',
 };

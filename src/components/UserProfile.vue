@@ -12,10 +12,15 @@
             <span class="white--text headline">{{getProfileUser.first_name | avatar}}</span>
           </v-avatar>
 
-          <!--<v-btn fab color="cyan accent-2"-->
-                 <!--bottom left absolute @click="SET_POST_DIALOG(true)">-->
-            <!--<v-icon>mdi-pencil</v-icon>-->
-          <!--</v-btn>-->
+          <v-row>
+            <v-col offset="1" cols="10" class="text-center relative">
+              <div class="text-center">
+                <v-btn color="primary" dark outlined
+                       @click="SHOW_USER_LIST({ type: 'followers' })">Follow</v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
         </v-col>
 
         <v-col offset="1" cols="10" class="background">
@@ -37,25 +42,43 @@
 
           </v-row>
 
+          <v-row>
+            <v-col offset="1" cols="10" class="text-center relative">
+              <div class="text-center">
+                <v-btn color="primary" dark x-large
+                       @click="SHOW_USER_LIST({ type: 'followers' })">Followers</v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
+          <v-row>
+            <v-col offset="1" cols="10" class="text-center relative py-0">
+              <div class="text-center">
+                <v-btn color="success" x-large
+                       @click="SHOW_USER_LIST({ type: 'following' })">Following</v-btn>
+              </div>
+            </v-col>
+          </v-row>
+
         </v-col>
 
       </v-row>
 
     </v-card>
 
-    <post-dialog/>
+    <people-list/>
 
   </v-col>
 
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import PostDialog from '@/components/PostDialog.vue';
+import { mapGetters, mapActions } from 'vuex';
+import PeopleList from '@/components/PeopleList.vue';
 
 export default {
   components: {
-    PostDialog,
+    PeopleList,
   },
   computed: {
     ...mapGetters([
@@ -64,8 +87,8 @@ export default {
     ]),
   },
   methods: {
-    ...mapMutations([
-      'SET_POST_DIALOG',
+    ...mapActions([
+      'SHOW_USER_LIST',
     ]),
   },
 };
