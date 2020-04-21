@@ -109,6 +109,14 @@ export default {
         data.push(item);
       });
     });
+    data.sort((a, b) => {
+      if (a.created_at < b.created_at){
+        return 1;
+      } else if (a.created_at > b.created_at){
+        return -1;
+      }
+      return 0;
+    })
     Vue.set(state, 'trendingPosts', data);
   },
   RESET_USER_DATA: (state) => {

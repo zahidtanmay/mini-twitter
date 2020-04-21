@@ -100,8 +100,9 @@ export default {
       return x.length > 0;
     },
     ownProfile: function () {
-      const profileUser = this.$route.params.name;
+      const profileUser = parseInt(this.$route.params.name);
       const user = this.getUser.id;
+      console.log('ownprofile', user, profileUser);
       return profileUser === user;
     },
     pivot: function () {

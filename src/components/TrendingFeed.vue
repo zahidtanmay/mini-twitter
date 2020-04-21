@@ -24,7 +24,7 @@
 
               <v-row>
 
-                <v-col cols="12" class="pa-0">
+                <v-col cols="10" class="pa-0">
                   <a class="title cyan--text hover"
                      @click="VISIT_PROFILE({ name: post.user.first_name, id: post.user.id })"
                   >{{post.user.first_name}}</a>

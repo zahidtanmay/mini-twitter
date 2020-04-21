@@ -156,4 +156,16 @@ export default {
     commit('RESET_USER_DATA');
     dispatch('FETCH_DATA', { type: 'USER_DATA' });
   },
+  async DELETE_POST({ dispatch, commit }, id) {
+    const token = await localStorage.getItem('token');
+    const url = `${baseURL}/posts/${id}?token=${token}`;
+    const r = await deleteRequest(url, {});
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+    commit('RESET_POST_DATA');
+    dispatch('FETCH_DATA', {type: 'POST_DATA'});
+  },
 };

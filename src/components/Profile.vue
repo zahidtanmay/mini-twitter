@@ -14,7 +14,7 @@
 
           <v-btn fab color="cyan accent-2"
             bottom left absolute @click="SET_POST_DIALOG(true)">
-            <v-icon>mdi-pencil</v-icon>
+            <v-icon>mdi-plus</v-icon>
           </v-btn>
         </v-col>
 

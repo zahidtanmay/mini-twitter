@@ -24,7 +24,7 @@
 
               <v-row>
 
-                <v-col cols="12" class="pa-0">
+                <v-col cols="10" class="pa-0">
                   <a class="title cyan--text hover"
                      @click="VISIT_PROFILE({ name: post.user.first_name, id: post.user.id })"
                   >{{post.user.first_name}}</a>
@@ -32,6 +32,12 @@
                     {{post.created_at | day}}
                   </p>
                 </v-col>
+
+                <template v-if="isAuthenticated && post.user.id === getUser.id">
+
+                  <post-action :post="post" />
+
+                </template>
 
                 <v-col class="text-left pa-0" cols="12" >
                   <div class="font-weight-regular">
@@ -75,11 +81,17 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import PostAction from '@/components/PostAction.vue';
 
 export default {
+  components: {
+    PostAction,
+  },
   computed: {
     ...mapGetters([
+      'isAuthenticated',
       'getPosts',
+      'getUser',
     ]),
   },
   methods: {
