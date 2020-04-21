@@ -19,4 +19,6 @@ export default {
   getFollowees: (state) => state.following,
   getFeedComponent: (state) => state.feedComponent,
   getPostDialog: (state) => state.postDialog,
+  getPostUpdate: (state) => state.postUpdate,
+  getPostUpdateContent: (state) => state.postUpdateContent,
 };

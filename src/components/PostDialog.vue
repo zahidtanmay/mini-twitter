@@ -23,8 +23,20 @@
           :disabled="getPostSubmitLoading || !value"
           color="primary"
           @click="SUBMIT_POST({content: value})"
+          v-if="!getPostUpdate"
         >
           Submit
+        </v-btn>
+
+        <v-btn
+          class="ma-2"
+          :loading="getPostSubmitLoading"
+          :disabled="getPostSubmitLoading || !value"
+          color="primary"
+          @click="UPDATE_POST({content: value, id: postId})"
+          v-if="getPostUpdate"
+        >
+          Update
         </v-btn>
 
       </v-card-actions>
@@ -38,18 +50,25 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
   data: () => ({
     value: '',
+    postId: null,
     loader: null,
     loading: false,
   }),
   computed: {
     ...mapGetters([
       'getPostSubmitLoading',
+      'getPostUpdate',
+      'getPostUpdateContent',
     ]),
     postDialog: {
       get() {
         return this.$store.state.postDialog;
       },
       set(v) {
+        if (!v) {
+          this.$store.commit('SET_POST_UPDATE', false);
+          this.$store.commit('SET_POST_UPDATE_CONTENT', null);
+        }
         this.$store.commit('SET_POST_DIALOG', v);
       },
     },
@@ -57,7 +76,15 @@ export default {
   methods: {
     ...mapActions([
       'SUBMIT_POST',
+      'UPDATE_POST',
     ]),
+  },
+  mounted() {
+    if (this.getPostUpdate) {
+      this.value = this.getPostUpdateContent.content;
+      this.postId = this.getPostUpdateContent.id;
+      console.log(this.getPostUpdateContent);
+    }
   },
 };
 </script>

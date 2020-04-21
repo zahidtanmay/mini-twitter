@@ -1,6 +1,9 @@
-import { getRequest, postRequest, deleteRequest } from '../library/fetchRequests';
+import {
+  getRequest, postRequest, deleteRequest, updateRequest,
+} from '../library/fetchRequests';
 /* eslint-disable */
 import router from '../router';
+import Vue from "vue/types/vue";
 /* eslint-disable */
 const baseURL = process.env.VUE_APP_POST_BASE_URL;
 
@@ -181,5 +184,25 @@ export default {
     commit('RESET_POST_DATA');
     commit('SET_COMMENT_DIALOG', false);
     dispatch('FETCH_DATA', {type: 'POST_DATA'});
+  },
+  async EDIT_POST({ commit }, content) {
+    commit('SET_POST_UPDATE', true);
+    commit('SET_POST_UPDATE_CONTENT', content);
+    commit('SET_POST_DIALOG', true);
+  },
+  async UPDATE_POST({ commit, dispatch }, content) {
+    const token = await localStorage.getItem('token');
+    const url = `${baseURL}/posts/${content.id}?token=${token}`;
+    const r = await updateRequest(url, { content: content.content });
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+    commit('RESET_POST_DATA');
+    dispatch('FETCH_DATA', {type: 'POST_DATA'});
+    commit('SET_POST_UPDATE', false);
+    commit('SET_POST_UPDATE_CONTENT', null);
+    commit('SET_POST_DIALOG', false);
   },
 };

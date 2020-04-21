@@ -32,4 +32,6 @@ export default {
   userListHeader: '',
   tab: 0,
   feedComponent: 'LatestFeed',
+  postUpdate: false,
+  postUpdateContent: null,
 };

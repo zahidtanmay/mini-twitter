@@ -32,3 +32,12 @@ export async function deleteRequest(url, data) {
     return e.response;
   }
 }
+
+export async function updateRequest(url, data) {
+  console.log('update request', url, data);
+  try {
+    return await axios.patch(`${url}`, { ...data });
+  } catch (e) {
+    return e.response;
+  }
+}

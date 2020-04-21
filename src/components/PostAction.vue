@@ -1,7 +1,7 @@
 <template>
   <div class="post-action">
     <v-col cols="1">
-      <v-btn color="#2c003e" text small>
+      <v-btn color="#2c003e" text small @click="EDIT_POST({ id: post.id, content: post.content })">
         <v-icon left>mdi-pencil</v-icon>
       </v-btn>
     </v-col>
@@ -23,6 +23,7 @@ export default {
   methods: {
     ...mapActions([
       'DELETE_POST',
+      'EDIT_POST',
     ]),
   },
 };

@@ -122,4 +122,10 @@ export default {
   RESET_USER_DATA: (state) => {
     Vue.set(state, 'followers', []);
   },
+  SET_POST_UPDATE: (state, value) => {
+    Vue.set(state, 'postUpdate', value);
+  },
+  SET_POST_UPDATE_CONTENT: (state, value) => {
+    Vue.set(state, 'postUpdateContent', value);
+  },
 };
