@@ -66,7 +66,19 @@ export default {
   },
   SET_USER_POSTS: (state, value) => {
     console.log('user profile', value);
-    Vue.set(state, 'profilePosts', value.posts);
+    let data = [];
+    value.posts.forEach((list) => {
+      data.push(list);
+    });
+    data.sort((a, b) => {
+      if (a.created_at < b.created_at){
+        return 1;
+      } else if (a.created_at > b.created_at){
+        return -1;
+      }
+      return 0;
+    })
+    Vue.set(state, 'profilePosts', data);
     Vue.set(state, 'profileUser',
       {
         id: value.id,
