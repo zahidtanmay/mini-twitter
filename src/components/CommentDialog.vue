@@ -27,8 +27,18 @@
 
               <v-list-item-content>
                 <v-list-item-title v-html="comment.user.first_name"></v-list-item-title>
-                <v-list-item-subtitle v-html="comment.content"></v-list-item-subtitle>
+                <v-list-item-subtitle >{{comment.content}}</v-list-item-subtitle>
               </v-list-item-content>
+
+              <v-list-item-action style="display: block;">
+                <v-btn icon>
+                  <v-icon color="grey lighten-1">mdi-pencil</v-icon>
+                </v-btn>
+                <v-btn icon @click="DELETE_COMMENT(comment.id)">
+                  <v-icon color="grey lighten-1">mdi-delete</v-icon>
+                </v-btn>
+              </v-list-item-action>
+
             </v-list-item>
             <v-divider v-if="index < getComments.length - 1"
                        :key="`comment-divider-key${index}`"></v-divider>
@@ -45,7 +55,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   data: () => ({
@@ -66,6 +76,9 @@ export default {
     },
   },
   methods: {
+    ...mapActions([
+      'DELETE_COMMENT',
+    ]),
     postComment() {
       this.comment = '';
       this.$store.dispatch('POST_COMMENT', { content: this.value });

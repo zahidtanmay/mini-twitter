@@ -108,6 +108,7 @@ export default {
       commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
     }
     commit('RESET_POST_DATA');
+    commit('SET_COMMENT_DIALOG', false);
     dispatch('FETCH_DATA', {type: 'POST_DATA'});
     commit('SET_COMMENT_LOADING', false);
   },
@@ -166,6 +167,19 @@ export default {
       commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
     }
     commit('RESET_POST_DATA');
+    dispatch('FETCH_DATA', {type: 'POST_DATA'});
+  },
+  async DELETE_COMMENT({ commit, dispatch }, id) {
+    const token = await localStorage.getItem('token');
+    const url = `${baseURL}/posts/comments/${id}?token=${token}`;
+    const r = await deleteRequest(url, {});
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+    commit('RESET_POST_DATA');
+    commit('SET_COMMENT_DIALOG', false);
     dispatch('FETCH_DATA', {type: 'POST_DATA'});
   },
 };
