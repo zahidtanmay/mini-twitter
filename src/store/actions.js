@@ -3,7 +3,6 @@ import {
 } from '../library/fetchRequests';
 /* eslint-disable */
 import router from '../router';
-import Vue from "vue/types/vue";
 /* eslint-disable */
 const baseURL = process.env.VUE_APP_POST_BASE_URL;
 
@@ -145,7 +144,7 @@ export default {
     commit('RESET_USER_DATA');
     dispatch('FETCH_DATA', { type: 'USER_DATA' });
   },
-  async UNFOLLOW_USER({ state, commit }) {
+  async UNFOLLOW_USER({ dispatch, state, commit }) {
     let pivot = state.followers.filter((follower) => {
       return follower.id === state.user.id;
     });
@@ -205,4 +204,26 @@ export default {
     commit('SET_POST_UPDATE_CONTENT', null);
     commit('SET_POST_DIALOG', false);
   },
+  async EDIT_COMMENT({ commit }, content) {
+    console.log('edit content', content);
+    commit('SET_COMMENT_UPDATE', null);
+    commit('SET_COMMENT_UPDATE', true);
+    commit('SET_COMMENT_UPDATE_CONTENT', content);
+  },
+  async UPDATE_COMMENT({ dispatch, commit }, content) {
+    console.log('update comment', content);
+    const token = await localStorage.getItem('token');
+    const url = `${baseURL}/posts/comments/${content.id}?token=${token}`;
+    const r = await updateRequest(url, { content: content.content });
+    if ('status' in r.data) {
+      commit('SET_SNACK_BAR', { type: 'success', text: r.data.message, status: true });
+    } else {
+      commit('SET_SNACK_BAR', { type: 'error', text: r.data.error.messages[0][0], status: true });
+    }
+    commit('RESET_POST_DATA');
+    dispatch('FETCH_DATA', {type: 'POST_DATA'});
+    commit('SET_COMMENT_UPDATE', false);
+    commit('SET_COMMENT_UPDATE_CONTENT', null);
+    commit('SET_COMMENT_DIALOG', false);
+  }
 };

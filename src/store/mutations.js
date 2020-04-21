@@ -128,4 +128,10 @@ export default {
   SET_POST_UPDATE_CONTENT: (state, value) => {
     Vue.set(state, 'postUpdateContent', value);
   },
+  SET_COMMENT_UPDATE: (state, value) => {
+    Vue.set(state, 'commentUpdate', value);
+  },
+  SET_COMMENT_UPDATE_CONTENT: (state, value) => {
+    Vue.set(state, 'commentUpdateContent', value);
+  },
 };

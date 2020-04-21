@@ -34,4 +34,6 @@ export default {
   feedComponent: 'LatestFeed',
   postUpdate: false,
   postUpdateContent: null,
+  commentUpdate: false,
+  commentUpdateContent: null,
 };

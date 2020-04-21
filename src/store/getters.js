@@ -21,4 +21,6 @@ export default {
   getPostDialog: (state) => state.postDialog,
   getPostUpdate: (state) => state.postUpdate,
   getPostUpdateContent: (state) => state.postUpdateContent,
+  getCommentUpdate: (state) => state.commentUpdate,
+  getCommentUpdateContent: (state) => state.commentUpdateContent,
 };
