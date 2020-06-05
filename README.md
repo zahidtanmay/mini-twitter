@@ -3,7 +3,7 @@
 A twitter like social media front end project where a user can see feeds from all people and follow others.
 
 ## Technology Stack
-VUE CLI 4, VUE JS, VUEX, VUE ROUTER
+VUE CLI 4, VUE JS, VUETIFY, VUEX, VUE ROUTER
 
 ## Project setup
 ```
